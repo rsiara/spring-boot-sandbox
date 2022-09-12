@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service("test")
+@Service("personServiceJdbc")
 public class PersonServiceImplJdbc implements PersonService {
     @Autowired
     JdbcPersonRepository jdbcPersonRepository;
