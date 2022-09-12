@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@Service("test1")
+@Service("personService")
 public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonRepository personRepository;

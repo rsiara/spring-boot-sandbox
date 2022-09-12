@@ -14,7 +14,7 @@ public interface PersonService {
 
     // Update operation
     Person updateUser(Person person,
-                                Integer personId);
+                      Integer personId);
 
     // Delete operation
     void deleteUserById(Integer personId);

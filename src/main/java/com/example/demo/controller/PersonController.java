@@ -17,9 +17,7 @@ import java.util.Optional;
 public class PersonController {
 
     @Autowired
-    @Qualifier("test1")
-//    dzięki teemu że personService to interejs mogę przełączać się pomiędzy Serwisami
-//    w których jest różna implementacja metod
+    @Qualifier("personService")
     private PersonService personService;
 
     @GetMapping("/users")
@@ -51,16 +49,13 @@ public class PersonController {
         return personService.saveUser(person);
     }
 
-    // Update operation
     @PutMapping("/users/{id}")
-    public Person
-    updateUser(@RequestBody Person person,
-               @PathVariable("id") Integer userId) {
+    public Person updateUser(@RequestBody Person person,
+                             @PathVariable("id") Integer userId) {
         return personService.updateUser(
                 person, userId);
     }
 
-    // Delete operation
     @DeleteMapping("/users/{id}")
     public String deleteUserById(@PathVariable("id") Integer userId) {
         personService.deleteUserById(

@@ -13,7 +13,6 @@ import java.util.Optional;
 public class JdbcPersonRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
-
     public Person save(Person person) {
          jdbcTemplate.update(
                 "insert into person (id, name, phone_number, address) values(?,?,?,?)",

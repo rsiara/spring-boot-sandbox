@@ -9,18 +9,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Service("test")
-public class PersonServiceImplJdbc implements PersonService{
-   @Autowired
+public class PersonServiceImplJdbc implements PersonService {
+    @Autowired
     JdbcPersonRepository jdbcPersonRepository;
 
     @Override
     public Person saveUser(Person person) {
-       return jdbcPersonRepository.save(person);
+        return jdbcPersonRepository.save(person);
     }
 
     @Override
     public List<Person> getAllUsers() {
-      return jdbcPersonRepository.findAll();
+        return jdbcPersonRepository.findAll();
     }
 
     @Override
@@ -32,7 +32,6 @@ public class PersonServiceImplJdbc implements PersonService{
     @Override
     public void deleteUserById(Integer personId) {
         jdbcPersonRepository.deleteById(personId);
-
     }
 
     @Override

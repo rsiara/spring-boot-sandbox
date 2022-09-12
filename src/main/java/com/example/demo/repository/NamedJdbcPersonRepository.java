@@ -15,9 +15,8 @@ import java.util.List;
 public class NamedJdbcPersonRepository {
 
     @Autowired
-    @Qualifier("namedJdbcABC")
+//    @Qualifier("namedJdbcTemplate")
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
 
     public Person save(Person person) {
         String sql = "insert into person (id, name, phone_number, address) values(:id,:name,:phone_number,:address)";
