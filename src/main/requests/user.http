@@ -1,0 +1,9 @@
+###
+POST http://localhost:8099/api/user
+Content-Type: application/json
+
+{
+  "userId": "test_759fdec505e4",
+  "firstName": "test_7422e85875ad",
+  "lastName": "test_f363b53fd00e"
+}
