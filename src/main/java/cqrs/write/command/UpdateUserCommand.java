@@ -1,7 +1,7 @@
 package cqrs.write.command;
 
-import cqrs.write.model.Address;
-import cqrs.write.model.Contact;
+import cqrs.model.user.Address;
+import cqrs.model.user.Contact;
 import lombok.Data;
 
 import java.util.Set;

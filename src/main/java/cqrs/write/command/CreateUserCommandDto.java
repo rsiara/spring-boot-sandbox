@@ -3,7 +3,7 @@ package cqrs.write.command;
 import lombok.Data;
 
 @Data
-public class CreateUserCommand {
+public class CreateUserCommandDto {
 
   private String userId;
   private String firstName;

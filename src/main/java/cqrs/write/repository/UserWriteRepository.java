@@ -1,6 +1,6 @@
 package cqrs.write.repository;
 
-import cqrs.write.model.User;
+import cqrs.model.user.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
