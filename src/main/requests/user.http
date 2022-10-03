@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8099/api/user
+POST http://localhost:8099/api/userWrite
 Content-Type: application/json
 
 {

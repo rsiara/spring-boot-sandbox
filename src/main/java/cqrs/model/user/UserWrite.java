@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Data
 @AllArgsConstructor
-public class User {
+public class UserWrite {
 
   private String userid;
   private String firstName;
@@ -15,7 +15,7 @@ public class User {
   private Set<Contact> contacts;
   private Set<Address> addresses;
 
-  public User(String userid, String firstName, String lastName) {
+  public UserWrite(String userid, String firstName, String lastName) {
     this.userid = userid;
     this.firstName = firstName;
     this.lastName = lastName;

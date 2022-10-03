@@ -1,26 +1,33 @@
 package cqrs.write.aggregate;
 
+import cqrs.model.order.OrderWrite;
+import cqrs.model.user.UserRead;
+import cqrs.model.user.UserWrite;
+import cqrs.read.service.UserReadService;
 import cqrs.write.command.CreateOrderCommandDto;
-import cqrs.write.command.CreateUserCommandDto;
-import cqrs.write.command.UpdateUserCommand;
-import cqrs.model.user.User;
-import cqrs.write.repository.UserWriteRepository;
+import cqrs.write.service.OrderWriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserPlaceOrderAggregateService {
 
-  private final UserWriteRepository writeRepository;
+  private final UserReadService userReadService;
+  private final OrderWriteService orderWriteService;
 
   @Autowired
-  public UserPlaceOrderAggregateService(UserWriteRepository repository) {
-    this.writeRepository = repository;
+  public UserPlaceOrderAggregateService(UserReadService userReadService, OrderWriteService orderWriteService) {
+    this.userReadService = userReadService;
+    this.orderWriteService = orderWriteService;
   }
 
   public void handleUserPlaceOrderCommand(CreateOrderCommandDto createUserCommandDto){
 
+      UserRead userRead = userReadService.getUser(createUserCommandDto.getUserId());
 
+      if(userRead != null){
+        orderWriteService.create(new OrderWrite(userRead.getUserId(),createUserCommandDto.getProductId()));
+      }
   }
 
 //  public User handleCreateUserCommand(CreateUserCommandDto command) {

@@ -1,6 +1,6 @@
 package cqrs.write.service;
 
-import cqrs.model.user.User;
+import cqrs.model.user.UserWrite;
 import cqrs.write.repository.UserWriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class UserWriteService {
     this.userWriteRepository = userWriteRepository;
   }
 
-  public void createUser(User user){
-    userWriteRepository.create(user.getUserid(), user);
+  public void createUser(UserWrite userWrite){
+    userWriteRepository.create(userWrite.getUserid(), userWrite);
   }
 }

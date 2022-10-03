@@ -1,6 +1,6 @@
 package cqrs.write.repository;
 
-import cqrs.model.user.User;
+import cqrs.model.user.UserWrite;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -8,14 +8,14 @@ import java.util.HashMap;
 @Repository
 public class UserWriteRepository {
 
-  private final HashMap<String, User> userHashMap = new HashMap<>();
+  private final HashMap<String, UserWrite> userHashMap = new HashMap<>();
 
-  public void create(String userId, User user) {
+  public void create(String userId, UserWrite userWrite) {
 
-    userHashMap.put(userId, user);
+    userHashMap.put(userId, userWrite);
   }
 
-  public User getUser(String userId) {
+  public UserWrite getUser(String userId) {
 
     return userHashMap.get(userId);
   }

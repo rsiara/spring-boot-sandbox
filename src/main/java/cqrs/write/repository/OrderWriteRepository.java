@@ -1,6 +1,6 @@
 package cqrs.write.repository;
 
-import cqrs.model.order.Order;
+import cqrs.model.order.OrderWrite;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -8,9 +8,9 @@ import java.util.HashMap;
 @Repository
 public class OrderWriteRepository {
 
-  private final HashMap<String, Order> userToOrderMap = new HashMap<>();
+  private final HashMap<String, OrderWrite> orderStore = new HashMap<>();
 
-  public void createOrder(String userId, Order order) {
-    userToOrderMap.put(userId, order);
+  public void save(OrderWrite orderWrite) {
+    orderStore.put(String.valueOf(orderStore.size() + 1), orderWrite);
   }
 }
