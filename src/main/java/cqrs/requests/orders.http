@@ -1,0 +1,13 @@
+###
+POST http://localhost:8099/api/order?orderId=1
+
+###
+POST http://localhost:8099/api/order
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "productId": "p111222333"
+}
+
+

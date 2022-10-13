@@ -3,7 +3,7 @@ package cqrs.read.aggregate;
 import cqrs.model.order.OrderRead;
 import cqrs.model.orderdetail.OrderDetailRead;
 import cqrs.model.user.UserRead;
-import cqrs.model.userorders.UserOrders;
+import cqrs.model.userorders.UserOrdersRead;
 import cqrs.read.query.GetOrderQuery;
 import cqrs.read.query.GetOrderWithUserDetailQuery;
 import cqrs.read.query.GetUserOrdersQuery;
@@ -42,9 +42,9 @@ public class UserReadOrderAggregateService {
     return orderDetailRead;
   }
 
-  public UserOrders handleGetUserOrdersQuery(GetUserOrdersQuery getUserOrdersQuery){
+  public UserOrdersRead handleGetUserOrdersQuery(GetUserOrdersQuery getUserOrdersQuery){
 
-    UserOrders userOrders = new UserOrders();
+    UserOrdersRead userOrders = new UserOrdersRead();
 
     UserRead userRead = userReadService.getUser(getUserOrdersQuery.getUserId());
 

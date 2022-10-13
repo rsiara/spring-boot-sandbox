@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserOrders {
+public class UserOrdersRead {
 
   private String userId;
   private List<OrderRead> orderReadList;
