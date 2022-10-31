@@ -9,19 +9,17 @@ import cqrs.read.query.GetOrderWithUserDetailQuery;
 import cqrs.read.query.GetUserOrdersQuery;
 import cqrs.read.service.OrderReadService;
 import cqrs.read.service.UserReadService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class UserReadOrderAggregateService {
+@AllArgsConstructor
+public class OrderProjectionService {
 
   private UserReadService userReadService;
   private OrderReadService orderReadService;
-
-  public UserReadOrderAggregateService(UserReadService userReadService) {
-    this.userReadService = userReadService;
-  }
 
   public OrderRead handleGetOrderQuery(GetOrderQuery getOrderQuery){
     return orderReadService.getOrder(getOrderQuery.getOrderId());

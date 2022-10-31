@@ -1,19 +1,18 @@
-package cqrs.projection;
+package cqrs.projector;
 
 import cqrs.model.order.OrderRead;
 import cqrs.model.order.OrderWrite;
 import cqrs.read.repository.OrderReadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
-public class UserOrderProjection {
+public class UserOrderProjector {
 
   private OrderReadRepository orderReadRepository;
 
   @Autowired
-  public UserOrderProjection(OrderReadRepository orderReadRepository) {
+  public UserOrderProjector(OrderReadRepository orderReadRepository) {
     this.orderReadRepository = orderReadRepository;
   }
 

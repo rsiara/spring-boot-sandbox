@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.Set;
 
 @Data
-public class UpdateUserCommand {
+public class UpdateUserCommandDto {
 
   private String userId;
   private Set<Address> addresses;

@@ -1,7 +1,7 @@
 package cqrs.write.service;
 
 import cqrs.model.order.OrderWrite;
-import cqrs.projection.UserOrderProjection;
+import cqrs.projector.UserOrderProjector;
 import cqrs.write.repository.OrderWriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,16 +10,16 @@ import org.springframework.stereotype.Service;
 public class OrderWriteService {
 
   private OrderWriteRepository orderWriteRepository;
-  private UserOrderProjection userOrderProjection;
+  private UserOrderProjector userOrderProjector;
 
   @Autowired
-  public OrderWriteService(OrderWriteRepository orderWriteRepository, UserOrderProjection userOrderProjection) {
+  public OrderWriteService(OrderWriteRepository orderWriteRepository, UserOrderProjector userOrderProjector) {
     this.orderWriteRepository = orderWriteRepository;
-    this.userOrderProjection = userOrderProjection;
+    this.userOrderProjector = userOrderProjector;
   }
 
   public void create(OrderWrite orderWrite){
     orderWriteRepository.save(orderWrite);
-    userOrderProjection.project(orderWrite);
+    userOrderProjector.project(orderWrite);
   }
 }

@@ -3,7 +3,7 @@ package cqrs.read.controller;
 import cqrs.model.order.OrderRead;
 import cqrs.model.orderdetail.OrderDetailRead;
 import cqrs.model.userorders.UserOrdersRead;
-import cqrs.read.aggregate.UserReadOrderAggregateService;
+import cqrs.read.aggregate.OrderProjectionService;
 import cqrs.read.query.GetOrderQuery;
 import cqrs.read.query.GetOrderWithUserDetailQuery;
 import cqrs.read.query.GetUserOrdersQuery;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class OrderReadController {
 
-  private UserReadOrderAggregateService userReadOrderAggregateService;
+  private OrderProjectionService userReadOrderAggregateService;
 
   @Autowired
-  public OrderReadController(UserReadOrderAggregateService userReadOrderAggregateService) {
+  public OrderReadController(OrderProjectionService userReadOrderAggregateService) {
     this.userReadOrderAggregateService = userReadOrderAggregateService;
   }
 

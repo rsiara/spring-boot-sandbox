@@ -2,8 +2,6 @@ package cqrs.write.aggregate;
 
 import cqrs.model.order.OrderWrite;
 import cqrs.model.user.UserRead;
-import cqrs.model.user.UserWrite;
-import cqrs.projection.UserOrderProjection;
 import cqrs.read.service.UserReadService;
 import cqrs.write.command.CreateOrderCommandDto;
 import cqrs.write.service.OrderWriteService;
@@ -17,8 +15,7 @@ public class UserPlaceOrderAggregateService {
   private final OrderWriteService orderWriteService;
 
   @Autowired
-  public UserPlaceOrderAggregateService(UserReadService userReadService, OrderWriteService orderWriteService
-      , UserOrderProjection userOrderProjection) {
+  public UserPlaceOrderAggregateService(UserReadService userReadService, OrderWriteService orderWriteService) {
     this.userReadService = userReadService;
     this.orderWriteService = orderWriteService;
   }
