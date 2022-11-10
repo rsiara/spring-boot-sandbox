@@ -5,12 +5,18 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import testable.LoginService;
 
 
 import javax.sql.DataSource;
 
 @Configuration
 public class JdbcConfig {
+
+  @Bean
+  public LoginService loginService(){
+    return new LoginService();
+  }
 
 // Klasa nadpisuje dataSource i jdbcTemplate tworzony przez spring boot starter
 

@@ -1,11 +1,10 @@
 package testable;
 
-import lombok.AllArgsConstructor;
+
 import testable.model.User;
 
 import java.util.*;
 
-@AllArgsConstructor
 public class LoginService {
 
   Map<String, User> userMap = Collections.singletonMap("bob", new User("bob", "123456"));
@@ -17,6 +16,8 @@ public class LoginService {
 
   public boolean logIn(User user) {
 
+    System.out.println("Login try: " + user.toString());
     return userMap.containsKey(user.getUsername()) && userMap.get(user.getUsername()).getPassword().equals(user.getPassword());
   }
+
 }
