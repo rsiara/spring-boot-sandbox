@@ -1,4 +1,4 @@
-package cqrs.model.user;
+package cqrs.read.model.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Set;
 @Data
 @AllArgsConstructor
-public class UserRead {
+public class User {
 
   private String userId;
   private String firstName;
@@ -14,7 +14,7 @@ public class UserRead {
   private Set<Contact> contacts;
   private Set<Address> addresses;
 
-  public UserRead(String userId, String firstName, String lastName) {
+  public User(String userId, String firstName, String lastName) {
     this.userId = userId;
     this.firstName = firstName;
     this.lastName = lastName;

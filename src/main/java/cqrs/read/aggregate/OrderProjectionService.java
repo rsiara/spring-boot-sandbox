@@ -1,9 +1,9 @@
 package cqrs.read.aggregate;
 
-import cqrs.model.order.OrderRead;
-import cqrs.model.orderdetail.OrderDetailRead;
-import cqrs.model.user.UserRead;
-import cqrs.model.userorders.UserOrdersRead;
+import cqrs.read.model.order.Order;
+import cqrs.read.model.orderdetail.OrderDetailed;
+import cqrs.read.model.user.User;
+import cqrs.read.model.userorders.UserOrdersRead;
 import cqrs.read.query.GetOrderQuery;
 import cqrs.read.query.GetOrderWithUserDetailQuery;
 import cqrs.read.query.GetUserOrdersQuery;
@@ -21,18 +21,18 @@ public class OrderProjectionService {
   private UserReadService userReadService;
   private OrderReadService orderReadService;
 
-  public OrderRead handleGetOrderQuery(GetOrderQuery getOrderQuery){
+  public Order handleGetOrderQuery(GetOrderQuery getOrderQuery){
     return orderReadService.getOrder(getOrderQuery.getOrderId());
   }
 
-  public OrderDetailRead handleGetOrderWithUserDetailsQuery(GetOrderWithUserDetailQuery getOrderWithUserDetailQuery) {
+  public OrderDetailed handleGetOrderWithUserDetailsQuery(GetOrderWithUserDetailQuery getOrderWithUserDetailQuery) {
 
-    OrderDetailRead orderDetailRead = new OrderDetailRead();
+    OrderDetailed orderDetailRead = new OrderDetailed();
 
-    OrderRead orderRead = orderReadService.getOrder(getOrderWithUserDetailQuery.getOrderId());
+    Order orderRead = orderReadService.getOrder(getOrderWithUserDetailQuery.getOrderId());
 
     if (orderRead != null) {
-      UserRead userRead = userReadService.getUser(orderRead.getUserId());
+      User userRead = userReadService.getUser(orderRead.getUserId());
       orderDetailRead.setOrderId(orderRead.getOrderId());
       orderDetailRead.setOrderRead(orderRead);
       orderDetailRead.setUserRead(userRead);
@@ -44,11 +44,11 @@ public class OrderProjectionService {
 
     UserOrdersRead userOrders = new UserOrdersRead();
 
-    UserRead userRead = userReadService.getUser(getUserOrdersQuery.getUserId());
+    User userRead = userReadService.getUser(getUserOrdersQuery.getUserId());
 
     if(userRead != null){
       userOrders.setUserId(userRead.getUserId());
-      List<OrderRead> allUserOrders = orderReadService.getOrdersByUserId(userRead.getUserId());
+      List<Order> allUserOrders = orderReadService.getOrdersByUserId(userRead.getUserId());
       userOrders.setOrderReadList(allUserOrders);
     }
     return userOrders;

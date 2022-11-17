@@ -1,12 +1,12 @@
 package cqrs.write.repository;
 
-import cqrs.model.user.UserWrite;
+import cqrs.read.model.user.UserWrite;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 
 @Repository
-public class UserWriteRepository {
+public class UserRepository {
 
   private final HashMap<String, UserWrite> userHashMap = new HashMap<>();
 

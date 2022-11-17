@@ -1,7 +1,6 @@
 package cqrs.read.service;
 
-import cqrs.model.user.UserRead;
-import cqrs.model.user.UserWrite;
+import cqrs.read.model.user.User;
 import cqrs.read.repository.UserReadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ public class UserReadService {
     this.userReadRepository = userReadRepository;
   }
 
-  public UserRead getUser(String userId) {
+  public User getUser(String userId) {
     return userReadRepository.findById(userId);
   }
 }

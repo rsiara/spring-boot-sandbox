@@ -1,8 +1,8 @@
 package cqrs.read.controller;
 
-import cqrs.model.order.OrderRead;
-import cqrs.model.orderdetail.OrderDetailRead;
-import cqrs.model.userorders.UserOrdersRead;
+import cqrs.read.model.order.Order;
+import cqrs.read.model.orderdetail.OrderDetailed;
+import cqrs.read.model.userorders.UserOrdersRead;
 import cqrs.read.aggregate.OrderProjectionService;
 import cqrs.read.query.GetOrderQuery;
 import cqrs.read.query.GetOrderWithUserDetailQuery;
@@ -24,12 +24,12 @@ public class OrderReadController {
   }
 
   @GetMapping(path = "order")
-  public OrderRead getOrder(GetOrderQuery getOrderQuery){
+  public Order getOrder(GetOrderQuery getOrderQuery){
     return userReadOrderAggregateService.handleGetOrderQuery(getOrderQuery);
   }
 
   @GetMapping(path = "order/user/detail")
-  public OrderDetailRead getUserOrderDetails(GetOrderWithUserDetailQuery getOrderWithUserDetailQuery){
+  public OrderDetailed getUserOrderDetails(GetOrderWithUserDetailQuery getOrderWithUserDetailQuery){
     return userReadOrderAggregateService.handleGetOrderWithUserDetailsQuery(getOrderWithUserDetailQuery);
   }
 

@@ -1,6 +1,6 @@
-package cqrs.model.userorders;
+package cqrs.read.model.userorders;
 
-import cqrs.model.order.OrderRead;
+import cqrs.read.model.order.Order;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +13,5 @@ import java.util.List;
 public class UserOrdersRead {
 
   private String userId;
-  private List<OrderRead> orderReadList;
+  private List<Order> orderReadList;
 }

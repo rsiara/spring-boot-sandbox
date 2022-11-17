@@ -1,4 +1,4 @@
-package cqrs.model.user;
+package cqrs.read.model.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package cqrs.write.controller;
 
 import cqrs.write.command.CreateUserCommandDto;
-import cqrs.model.user.UserWrite;
+import cqrs.read.model.user.UserWrite;
 import cqrs.write.service.UserWriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,35 +1,31 @@
 package cqrs.read.repository;
 
-import cqrs.model.order.OrderRead;
+import cqrs.read.model.order.Order;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 @Repository
 public class OrderReadRepository {
 
-  private final HashMap<String, List<OrderRead>> userToOrdersReadStore = new HashMap<>();
+  private final HashMap<Integer, Order> orderStore = new HashMap<>();
 
-  public OrderRead findById(String orderId) {
-    return userToOrdersReadStore.values().stream().flatMap(Collection::stream)
-        .filter(orderRead -> orderRead.getOrderId().equals(orderId))
-        .findFirst().orElse(null);
+  public Order findById(String orderId) {
+    return orderStore.get(orderId);
   }
 
-  public List<OrderRead> findAll(){
-    return userToOrdersReadStore.values().stream().flatMap(Collection::stream)
-        .collect(Collectors.toList());
+  public List<Order> findAll(){
+    return new ArrayList<>(orderStore.values());
   }
 
-  public void addOrder(String userId, OrderRead orderRead){
-      List<OrderRead> currentUserOrderList = userToOrdersReadStore
-          .getOrDefault(userId, Collections.emptyList());
+  public void create(Order order){
+      orderStore.put(
+          orderStore.size(),
+          order
+      );
+  }
 
-      currentUserOrderList.add(orderRead);
-      userToOrdersReadStore.put(userId, currentUserOrderList);
+  public void update(Order order) {
+      orderStore.replace(order.getOrderId(), order);
   }
 }
