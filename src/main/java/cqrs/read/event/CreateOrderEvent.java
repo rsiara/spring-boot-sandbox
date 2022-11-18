@@ -1,4 +1,4 @@
-package cqrs.write.event;
+package cqrs.read.event;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Data
-public class CreateOrderEvent implements Event{
+public class CreateOrderEvent implements Event {
 
   private String id;
   private String type;
