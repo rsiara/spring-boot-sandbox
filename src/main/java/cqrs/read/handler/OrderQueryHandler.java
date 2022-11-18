@@ -10,16 +10,16 @@ import cqrs.read.query.GetUserOrderHistoryQuery;
 import cqrs.read.service.OrderService;
 import cqrs.read.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component
 @AllArgsConstructor
 public class OrderQueryHandler {
 
+  @Qualifier("writeUserService")
   private UserService userService;
   private OrderService orderService;
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 
-@Repository
+@Repository("readUserRepository")
 public class UserRepository {
 
   private final HashMap<String, User> userStore = new HashMap<>();

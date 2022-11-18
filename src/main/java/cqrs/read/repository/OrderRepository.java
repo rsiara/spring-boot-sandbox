@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
+@Repository("readOrderRepository")
 public class OrderRepository {
 
   private final HashMap<Integer, Order> orderStore = new HashMap<>();

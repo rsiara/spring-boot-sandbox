@@ -3,6 +3,7 @@ package cqrs.read.service;
 import cqrs.read.model.order.Order;
 import cqrs.read.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class OrderService {
 
+  @Qualifier("readOrderRepository")
   private final OrderRepository orderRepository;
 
   @Autowired

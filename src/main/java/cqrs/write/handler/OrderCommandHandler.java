@@ -7,6 +7,7 @@ import cqrs.write.command.order.RemoveProductCommandDto;
 import cqrs.write.event.AddOrderProductEvent;
 import cqrs.write.event.CreateOrderEvent;
 import cqrs.write.event.RemoveOrderProductEvent;
+import cqrs.write.event.publisher.EventPublisher;
 import cqrs.write.repository.EventStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,11 +17,13 @@ public class OrderCommandHandler {
 
   private final EventStoreRepository eventStoreRepository;
   private final OrderProjector orderProjector;
+  private final EventPublisher eventPublisher;
 
   @Autowired
-  public OrderCommandHandler(EventStoreRepository eventStoreRepository, OrderProjector orderProjector) {
+  public OrderCommandHandler(EventStoreRepository eventStoreRepository, OrderProjector orderProjector, EventPublisher eventPublisher) {
     this.eventStoreRepository = eventStoreRepository;
     this.orderProjector = orderProjector;
+    this.eventPublisher = eventPublisher;
   }
 
   public void handleCreateCommand(CreateOrderCommandDto createOrderCommandDto) {
@@ -33,6 +36,7 @@ public class OrderCommandHandler {
 
     eventStoreRepository.addEvent(createOrderEvent);
     orderProjector.project(createOrderEvent);
+    eventPublisher.publish(createOrderEvent);
   }
 
   public void handleAddProductCommand(AddProductCommandDto addProductCommandDto) {
@@ -44,6 +48,7 @@ public class OrderCommandHandler {
       );
       eventStoreRepository.addEvent(addOrderProductEvent);
       orderProjector.project(addOrderProductEvent);
+      eventPublisher.publish(addOrderProductEvent);
     }
   }
 
@@ -56,6 +61,7 @@ public class OrderCommandHandler {
       );
       eventStoreRepository.addEvent(removeOrderProductEvent);
       orderProjector.project(removeOrderProductEvent);
+      eventPublisher.publish(removeOrderProductEvent);
     }
   }
 }

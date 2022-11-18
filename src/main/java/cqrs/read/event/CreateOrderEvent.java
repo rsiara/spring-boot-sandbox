@@ -1,11 +1,13 @@
 package cqrs.read.event;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Map;
 import java.util.UUID;
 
 @Data
+@NoArgsConstructor
 public class CreateOrderEvent implements Event {
 
   private String id;
