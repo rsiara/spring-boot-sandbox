@@ -1,10 +1,10 @@
 package cqrs.projector;
 
 import cqrs.read.model.order.Order;
-import cqrs.read.repository.OrderReadRepository;
-import cqrs.write.event.AddProductToOrderEvent;
+import cqrs.read.repository.OrderRepository;
+import cqrs.write.event.AddOrderProductEvent;
 import cqrs.write.event.CreateOrderEvent;
-import cqrs.write.event.RemoveProductFromOrderEvent;
+import cqrs.write.event.RemoveOrderProductEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,11 +14,11 @@ import java.util.Map;
 @Component
 public class OrderProjector {
 
-  private OrderReadRepository orderReadRepository;
+  private OrderRepository orderRepository;
 
   @Autowired
-  public OrderProjector(OrderReadRepository orderReadRepository) {
-    this.orderReadRepository = orderReadRepository;
+  public OrderProjector(OrderRepository orderRepository) {
+    this.orderRepository = orderRepository;
   }
 
   public void project(CreateOrderEvent createOrderEvent){
@@ -28,41 +28,41 @@ public class OrderProjector {
         createOrderEvent.getProductIds(),
         createOrderEvent.getDiscountCoupon());
 
-    orderReadRepository.create(order);
+    orderRepository.create(order);
   }
 
-  public void project(AddProductToOrderEvent addProductToOrderEvent){
+  public void project(AddOrderProductEvent addOrderProductEvent){
 
-    Order order = orderReadRepository.findById(addProductToOrderEvent.getOrderId());
+    Order order = orderRepository.findById(addOrderProductEvent.getOrderId());
 
     Map<String,String> updatedProductIds = new HashMap<>();
     updatedProductIds.putAll(order.getProductIds());
     updatedProductIds.put(
-        addProductToOrderEvent.getProductId(),
-        addProductToOrderEvent.getProductId());
+        addOrderProductEvent.getProductId(),
+        addOrderProductEvent.getProductId());
 
     Order updatedOrder = new Order(
         order.getUserId(),
         updatedProductIds,
         order.getDiscountCoupon());
 
-    orderReadRepository.update(updatedOrder);
+    orderRepository.update(updatedOrder);
   }
 
-  public void project(RemoveProductFromOrderEvent removeProductFromOrderEvent) {
+  public void project(RemoveOrderProductEvent removeOrderProductEvent) {
 
-    Order order = orderReadRepository.findById(removeProductFromOrderEvent.getOrderId());
+    Order order = orderRepository.findById(removeOrderProductEvent.getOrderId());
 
     Map<String, String> updatedProductIds = new HashMap<>();
     updatedProductIds.putAll(order.getProductIds());
-    updatedProductIds.remove(removeProductFromOrderEvent.getProductId());
+    updatedProductIds.remove(removeOrderProductEvent.getProductId());
 
     Order updatedOrder = new Order(
         order.getUserId(),
         updatedProductIds,
         order.getDiscountCoupon());
 
-    orderReadRepository.update(updatedOrder);
+    orderRepository.update(updatedOrder);
 
   }
 }

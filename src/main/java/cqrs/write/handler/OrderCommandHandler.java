@@ -4,15 +4,12 @@ import cqrs.projector.OrderProjector;
 import cqrs.write.command.order.AddProductCommandDto;
 import cqrs.write.command.order.CreateOrderCommandDto;
 import cqrs.write.command.order.RemoveProductCommandDto;
-import cqrs.write.event.AddProductToOrderEvent;
+import cqrs.write.event.AddOrderProductEvent;
 import cqrs.write.event.CreateOrderEvent;
-import cqrs.write.event.RemoveProductFromOrderEvent;
+import cqrs.write.event.RemoveOrderProductEvent;
 import cqrs.write.repository.EventStoreRepository;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class OrderCommandHandler {
@@ -41,24 +38,24 @@ public class OrderCommandHandler {
   public void handleAddProductCommand(AddProductCommandDto addProductCommandDto) {
 
     for (String productToAdd : addProductCommandDto.getProductIds()) {
-      AddProductToOrderEvent addProductToOrderEvent = new AddProductToOrderEvent(
+      AddOrderProductEvent addOrderProductEvent = new AddOrderProductEvent(
           addProductCommandDto.getOrderId(),
           productToAdd
       );
-      eventStoreRepository.addEvent(addProductToOrderEvent);
-      orderProjector.project(addProductToOrderEvent);
+      eventStoreRepository.addEvent(addOrderProductEvent);
+      orderProjector.project(addOrderProductEvent);
     }
   }
 
   public void handleRemoveProductCommand(RemoveProductCommandDto removeProductCommandDto) {
 
     for (String productToRemove : removeProductCommandDto.getProductIds()) {
-      RemoveProductFromOrderEvent removeProductFromOrderEvent = new RemoveProductFromOrderEvent(
+      RemoveOrderProductEvent removeOrderProductEvent = new RemoveOrderProductEvent(
           removeProductCommandDto.getOrderId(),
           productToRemove
       );
-      eventStoreRepository.addEvent(removeProductFromOrderEvent);
-      orderProjector.project(removeProductFromOrderEvent);
+      eventStoreRepository.addEvent(removeOrderProductEvent);
+      orderProjector.project(removeOrderProductEvent);
     }
   }
 }

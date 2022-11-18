@@ -1,4 +1,4 @@
-package cqrs.read.model.order;
+package cqrs.write.model.order;
 
 import lombok.Data;
 

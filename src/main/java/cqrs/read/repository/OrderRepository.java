@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 @Repository
-public class OrderReadRepository {
+public class OrderRepository {
 
   private final HashMap<Integer, Order> orderStore = new HashMap<>();
 
@@ -14,8 +14,8 @@ public class OrderReadRepository {
     return orderStore.get(orderId);
   }
 
-  public List<Order> findAll(){
-    return new ArrayList<>(orderStore.values());
+  public Map<Integer, Order> findAll(){
+    return new HashMap<>(orderStore);
   }
 
   public void create(Order order){

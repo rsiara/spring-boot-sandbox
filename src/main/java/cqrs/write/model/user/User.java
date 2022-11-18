@@ -1,6 +1,9 @@
-package cqrs.read.model.user;
+package cqrs.write.model.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 public class User {

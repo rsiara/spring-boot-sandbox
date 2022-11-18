@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/order")
-public class OrderWriteController {
+public class OrderCommandController {
 
   private final OrderCommandHandler orderCommandHandler;
 
   @Autowired
-  public OrderWriteController(OrderCommandHandler orderCommandHandler) {
+  public OrderCommandController(OrderCommandHandler orderCommandHandler) {
 
     this.orderCommandHandler = orderCommandHandler;
   }

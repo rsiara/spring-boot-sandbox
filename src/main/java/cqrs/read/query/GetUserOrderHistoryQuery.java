@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class GetUserOrdersQuery {
+public class GetUserOrderHistoryQuery {
 
   private final String userId;
 }

@@ -6,11 +6,11 @@ import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 
 @Repository
-public class UserReadRepository {
+public class UserRepository {
 
-  private final HashMap<String, User> userReadStore = new HashMap<>();
+  private final HashMap<String, User> userStore = new HashMap<>();
 
   public User findById(String userId) {
-    return userReadStore.get(userId);
+    return userStore.get(userId);
   }
 }
