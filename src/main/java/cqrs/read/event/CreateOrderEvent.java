@@ -1,5 +1,6 @@
 package cqrs.read.event;
 
+import cqrs.write.event.Event;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CreateOrderEvent implements Event {
 
+  public static final String TYPE = "CREATE";
+
   private String id;
   private String type;
   private String userId;
@@ -18,7 +21,7 @@ public class CreateOrderEvent implements Event {
 
   public CreateOrderEvent(String userId, Map<String, String> productIds, String discountCoupon) {
     this.id = String.valueOf(UUID.randomUUID());
-    this.type = "CREATE";
+    this.type = TYPE;
     this.userId = userId;
     this.productIds = productIds;
     this.discountCoupon = discountCoupon;
