@@ -9,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 class EmployeeComparable implements Comparable<EmployeeComparable> {
   private String name;
+  private int age;
   private Integer salary;
   private List<String> languages;
   private String department;

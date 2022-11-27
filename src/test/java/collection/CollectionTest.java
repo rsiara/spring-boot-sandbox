@@ -10,10 +10,10 @@ public class CollectionTest {
   @Test
   void test() {
 
-    Employee john = new Employee("john", 2000, Arrays.asList("polski","niemiecki"), "it");
-    Employee marc = new Employee("marc", 5000, Arrays.asList("hiszpański","holenderski"), "marketing");
-    Employee ann = new Employee("ann", 3000, Arrays.asList("polski","angielski"), "księgowość");
-
+    Employee john = new Employee("john", 22,2000, Arrays.asList("polski", "niemiecki"), "it");
+    Employee marc = new Employee("marc", 18,5000, Arrays.asList("hiszpański", "holenderski"), "marketing");
+    Employee ann = new Employee("ann", 34,3000, Arrays.asList("polski", "angielski"), "księgowość");
+    Employee greg = new Employee("greg", 19,4000, Arrays.asList("polski"), "logistic");
 
     SortedMap<Employee, String> sortedMap = new TreeMap<>(new Comparator<Employee>() {
       @Override
@@ -25,6 +25,8 @@ public class CollectionTest {
     sortedMap.put(john, john.getDepartment());
     sortedMap.put(marc, marc.getDepartment());
     sortedMap.put(ann, ann.getDepartment());
+    sortedMap.put(ann, greg.getDepartment());
+
 
     System.out.println(sortedMap.values());
   }
@@ -32,9 +34,10 @@ public class CollectionTest {
   @Test
   void comparable() {
 
-    EmployeeComparable john = new EmployeeComparable("john", 2000, Arrays.asList("polski","niemiecki"), "it");
-    EmployeeComparable marc = new EmployeeComparable("marc", 5000, Arrays.asList("hiszpański","holenderski"), "marketing");
-    EmployeeComparable ann = new EmployeeComparable("ann", 3000, Arrays.asList("polski","angielski"), "księgowość");
+    EmployeeComparable john = new EmployeeComparable("john", 22,2000, Arrays.asList("polski", "niemiecki"), "it");
+    EmployeeComparable marc = new EmployeeComparable("marc", 18,5000, Arrays.asList("hiszpański", "holenderski"), "marketing");
+    EmployeeComparable ann = new EmployeeComparable("ann", 34,3000, Arrays.asList("polski", "angielski"), "księgowość");
+    EmployeeComparable greg = new EmployeeComparable("greg", 19,4000, Arrays.asList("polski"), "logistic");
 
 
     SortedMap<EmployeeComparable, String> sortedMap = new TreeMap<>();
@@ -42,6 +45,8 @@ public class CollectionTest {
     sortedMap.put(john, john.getDepartment());
     sortedMap.put(marc, marc.getDepartment());
     sortedMap.put(ann, ann.getDepartment());
+    sortedMap.put(greg, ann.getDepartment());
+
 
     System.out.println(sortedMap.values());
   }
@@ -50,15 +55,16 @@ public class CollectionTest {
   @Test
   void sorterList() {
 
-    EmployeeComparable john = new EmployeeComparable("john", 2000, Arrays.asList("polski", "niemiecki"), "it");
-    EmployeeComparable marc = new EmployeeComparable("marc", 5000, Arrays.asList("hiszpański", "holenderski"), "marketing");
-    EmployeeComparable ann = new EmployeeComparable("ann", 3000, Arrays.asList("polski", "angielski"), "księgowość");
-
+    EmployeeComparable john = new EmployeeComparable("john", 22,2000, Arrays.asList("polski", "niemiecki"), "it");
+    EmployeeComparable marc = new EmployeeComparable("marc", 18,5000, Arrays.asList("hiszpański", "holenderski"), "marketing");
+    EmployeeComparable ann = new EmployeeComparable("ann", 34,3000, Arrays.asList("polski", "angielski"), "księgowość");
+    EmployeeComparable greg = new EmployeeComparable("greg", 19,4000, Arrays.asList("polski"), "logistic");
 
     List<EmployeeComparable> list = new LinkedList<>();
     list.add(marc);
     list.add(john);
     list.add(ann);
+    list.add(greg);
 
     Collections.sort(list);
     System.out.println(list);
@@ -69,15 +75,16 @@ public class CollectionTest {
   @Test
   void sorterListComparator() {
 
-    Employee john = new Employee("john", 2000, Arrays.asList("polski", "niemiecki"), "it");
-    Employee marc = new Employee("marc", 5000, Arrays.asList("hiszpański", "holenderski"), "marketing");
-    Employee ann = new Employee("ann", 3000, Arrays.asList("polski", "angielski"), "księgowość");
-
+    Employee john = new Employee("john", 22,2000, Arrays.asList("polski", "niemiecki"), "it");
+    Employee marc = new Employee("marc", 18,5000, Arrays.asList("hiszpański", "holenderski"), "marketing");
+    Employee ann = new Employee("ann", 34,3000, Arrays.asList("polski", "angielski"), "księgowość");
+    Employee greg = new Employee("greg", 19,4000, Arrays.asList("polski"), "logistic");
 
     List<Employee> list = new LinkedList<>();
     list.add(marc);
     list.add(john);
     list.add(ann);
+    list.add(greg);
 
     Collections.sort(list, new EmployeeComparator());
     System.out.println(list);
